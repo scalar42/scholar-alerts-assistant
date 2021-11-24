@@ -49,7 +49,9 @@ Note you can use `cron` or other tools to schedule the job.
 
 For the first time, you may need to open the browser to authorize the API.
 
+## Check the results
 
+Open your Gmail client, and you may now see your digest mail. All previous unread scholar alerts mails are now marked read.
 
 ## Special Credits
 
