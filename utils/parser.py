@@ -1,6 +1,7 @@
 from html.parser import HTMLParser
 
-class Paper():
+
+class Paper:
     def __init__(self):
         self.title = ""
         self.source_link = ""
@@ -34,12 +35,28 @@ class Paper():
         return self.check_complete()
 
     def check_complete(self):
-        if self.title == "" or self.source_link == "" or self.authr_and_pub == "" or self.abstract == "" or self.star_link == "":
+        if (
+            self.title == ""
+            or self.source_link == ""
+            or self.authr_and_pub == ""
+            or self.abstract == ""
+            or self.star_link == ""
+        ):
             return False
         return True
 
     def __str__(self):
-        return self.title + "\n" + self.source_link + "\n" + self.authr_and_pub + "\n" + self.abstract + "\n" + self.star_link
+        return (
+            self.title
+            + "\n"
+            + self.source_link
+            + "\n"
+            + self.authr_and_pub
+            + "\n"
+            + self.abstract
+            + "\n"
+            + self.star_link
+        )
 
     def __eq__(self, other):
         return self.title == other.title
@@ -71,12 +88,12 @@ class Parser(HTMLParser):
             self.is_title = True
         elif tag == "a" and self.is_title:
             for attr in attrs:
-                if attr[0].lower() == 'href':
+                if attr[0].lower() == "href":
                     self.current_paper.add_source_link(attr[1])
                     break
         elif tag == "a" and self.is_table:
             for attr in attrs:
-                if attr[0].lower() == 'href':
+                if attr[0].lower() == "href":
                     self.current_paper.add_star_link(attr[1])
                     self.is_table = False
                     self.move_to_next_paper()
